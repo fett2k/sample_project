@@ -1,0 +1,21 @@
+### Ignore everything
+*
+
+### Except for the obvious
+!.gitignore
+
+### Except the base structure
+
+# bin/base except config
+!bin/base/*
+bin/base/config
+
+# env/default
+!env/default/*
+
+# etl_repo/framework
+!etl_repo/framework/*
+
+# hello world
+!etl_repo/chains/run_hello_world.kjb
+!bin/run_hello_world.sh
