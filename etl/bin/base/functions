@@ -1,0 +1,49 @@
+#!/bin/bash
+
+init() {
+	if [ -z "$KETTLE_ENV" ]; 
+	then
+		echo "Please define the KETTLE_ENV variable in the configuration file."
+		exit
+	fi
+
+	if [ -z "$KETTLE_HOME" ]; 
+	then
+		echo "Please define the KETTLE_HOME variable in the configuration file."
+		exit
+	else
+		echo "DEBUG: KETTLE_HOME=$KETTLE_HOME"
+		export KETTLE_HOME="$KETTLE_HOME"
+	fi
+
+	if [ -z "$KETTLE_DIR" ];                                                
+	then                                                                     
+		echo "Please define the KETTLE_DIR variable in the configuration file."
+		exit
+	else
+		echo "DEBUG: KETTLE_DIR=$KETTLE_DIR"
+	fi
+
+  if [ -n "$KETTLE_JAVA_HOME" ];
+  then                       
+    echo "DEBUG: PENTAHO_JAVA_HOME=$KETTLE_JAVA_HOME"
+    export PENTAHO_JAVA_HOME=$KETTLE_JAVA_HOME                            
+  fi  
+
+	if [ -n "$KETTLE_JAVA_OPTS" ];
+	then
+		echo "DEBUG: PENTAHO_DI_JAVA_OPTIONS=$KETTLE_JAVA_OPTS"
+		export PENTAHO_DI_JAVA_OPTIONS=$KETTLE_JAVA_OPTS
+	fi
+}
+
+check_args () {
+	local total_args=$1
+	local target_args=$2
+
+	if [ $total_args -ne $target_args ];
+	then
+		echo "Error: Arguments Expected - $total_args - Received - $target_args"
+		exit
+	fi
+}
