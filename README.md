@@ -1,1 +1,1 @@
-# sample_module
+# sample_project
